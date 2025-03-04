@@ -1,0 +1,62 @@
+******************* views and indexes sheet ****************************
+1- The customer service team frequently searches for customers using their email 
+addresses. However, as the database grows, these searches are becoming slower.
+
+A- Identify a way to optimize the search performance for customer emails.
+B- Implement the optimization on the customers table.
+C- Retrieve the following details for a customer based on their email:
+customer_id
+first_name
+last_name
+email
+phone
+Write a query to fetch customer details using an email filter.
+
+2- The sales team frequently retrieves orders for a specific customer and filters 
+them based on the order status. These queries have become slow due to the large 
+number of records in the orders table.
+
+A- Create Index to improve the performance of these queries.
+
+B- Retrieve the following details for a customer's orders where order_status = 'Shipped':
+order_id
+order_date
+required_date
+shipped_date
+store_id
+
+Write a query to fetch this order data for a specific customer_id.
+
+3- Store managers need an inventory report that displays the available stock of 
+products in each store.
+
+A- Create View to simplify future inventory lookups.
+B- Retrieve and display the following details:
+store_name
+product_name
+quantity
+
+Write a query to fetch this inventory data for all stores.
+
+4- Sales reports require frequent joins between the orders table and the order_items
+table using order_id. These joins have become inefficient due to the growing data size.
+
+A- Identify a method to optimize these joins for better performance.
+B- Apply the optimization on the relevant table(s).
+C- Retrieve the following details for a specific order:
+order_id
+product_id
+quantity
+list_price
+discount
+
+Write a query to fetch order item details for a given order_id.
+
+5- The finance department needs a summary of total sales revenue per store.
+
+A- Implement a solution that allows quick revenue calculations (create view).
+B- Retrieve the following details for each store:
+store_name
+total_revenue (sum of list_price * quantity)
+
+Write a query to fetch total revenue per store.
