@@ -174,6 +174,7 @@ EXECUTE uspFindProducts
 
 
 ---------------- variables --------------------------------------
+
 DECLARE @model_year SMALLINT;
 
 SET @model_year = 2018;
@@ -205,7 +206,7 @@ PRINT @product_count;
 
 
 --------------- procedure with variables ------------------------------------
-ALTER  PROCEDURE uspGetProductList(
+Create  PROCEDURE uspGetProductList(
     @model_year SMALLINT
 ) AS 
 BEGIN
@@ -225,7 +226,7 @@ BEGIN
     PRINT @product_list;
 END;
 
-exec uspGetProductList 2018
+exec uspGetProductList 2019
 
 --------------- procedure output --------------------------------------
 
@@ -242,7 +243,8 @@ BEGIN
     WHERE
         model_year = @model_year;
 
-    SELECT @product_count = @@ROWCOUNT;
+    set @product_count = (select @@ROWCOUNT);
+	select @product_count = @@ROWCOUNT;
 END;
 
 
@@ -268,7 +270,7 @@ BEGIN
 
     SELECT @sales;
 
-    IF @sales > 1000000
+    IF @sales > 10000000
     BEGIN
         PRINT 'Great! The sales amount in 2017 is greater than 10,000,000';
     END

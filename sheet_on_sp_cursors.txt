@@ -1,0 +1,50 @@
+1- Create a stored procedure that:
+
+a- Takes a customer_id as input
+
+b- Returns the customer's full name, total number of orders, and total amount spent.
+
+c- Uses variables to store intermediate calculations.
+
+
+2- Create a procedure that:
+
+a- Takes store_id and product_id as parameters
+
+b- Checks the stock quantity from the stocks table
+
+Returns:
+
+"In Stock (X units)" if quantity > 5
+
+"Low Stock (X units)" if quantity between 1-5
+
+"Out of Stock" if quantity = 0
+
+"Product not carried" if no record exists
+
+
+3- Create a procedure that:
+
+a- Takes brand_id and percentage_increase as parameters
+
+b- Uses a WHILE loop to update prices of all products for that brand
+
+c- Applies the percentage increase to each product's list_price
+
+d- Returns the number of products updated
+
+
+4- Create a procedure that:
+
+a- Uses a cursor to find all orders where shipped_date is NULL and order_date is more than 7 days old
+
+For each late order:
+
+b- Updates the order_status to 'Late'
+
+c- Calculates a 5% discount for the order items
+
+d- Returns the total number of late orders processed
+
+5- 
