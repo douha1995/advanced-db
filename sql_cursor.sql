@@ -37,10 +37,6 @@ FETCH NEXT FROM cursor_product INTO
 
 WHILE @@FETCH_STATUS = 0
     BEGIN
-		if @list_price <1000000 
-			begin
-				continue;
-			end
         PRINT @product_name + CAST(@list_price AS varchar);
         FETCH NEXT FROM cursor_product INTO 
             @product_name, 
@@ -75,7 +71,7 @@ the CATCH block, all of these functions will return NULL.
 
 */
 
-CREATE PROC usp_divide(
+CREATE PROC usp_divide1(
     @a decimal,
     @b decimal,
     @c decimal output
@@ -97,12 +93,12 @@ END;
 GO
 
 DECLARE @r decimal;
-EXEC usp_divide 10, 2, @r output;
+EXEC usp_divide1 10, 2, @r output;
 PRINT @r;
 
 
 DECLARE @r2 decimal;
-EXEC usp_divide 10, 0, @r2 output;
+EXEC usp_divide1 10, 0, @r2 output;
 PRINT @r2;
 
 /*

@@ -177,7 +177,7 @@ EXECUTE uspFindProducts
 
 DECLARE @model_year SMALLINT;
 
-SET @model_year = 2018;
+SET @model_year = 2019;
 
 SELECT
     product_name,
@@ -206,7 +206,7 @@ PRINT @product_count;
 
 
 --------------- procedure with variables ------------------------------------
-Create  PROCEDURE uspGetProductList(
+Create  PROCEDURE uspGetProductList1(
     @model_year SMALLINT
 ) AS 
 BEGIN
@@ -226,11 +226,11 @@ BEGIN
     PRINT @product_list;
 END;
 
-exec uspGetProductList 2019
+exec uspGetProductList1 2019
 
 --------------- procedure output --------------------------------------
 
-CREATE PROCEDURE uspFindProductByModel_1 (
+CREATE PROCEDURE uspFindProductByModel (
     @model_year SMALLINT,
     @product_count INT OUTPUT
 ) AS
@@ -243,13 +243,13 @@ BEGIN
     WHERE
         model_year = @model_year;
 
-    set @product_count = (select @@ROWCOUNT);
+    --set @product_count = (select @@ROWCOUNT);
 	select @product_count = @@ROWCOUNT;
 END;
 
 
 DECLARE @count INT;
-EXEC uspFindProductByModel_1
+EXEC uspFindProductByModel
     @model_year = 2018,
     @product_count = @count OUTPUT;
 
