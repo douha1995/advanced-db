@@ -7,6 +7,8 @@
 ## 📺 Course Resources
 
 - **YouTube Playlist:** [Watch Lectures](https://www.youtube.com/playlist?list=PLH1DHVpguI_L72ao8wCXfKswVvLmfGsM5)
+- **CMU Database Course:** [Intro to Database Systems](https://www.youtube.com/playlist?list=PLSE8ODhjZXjbj8BMuIrRcacnQh20hmY9g)
+- **CMU Advanced Database:** [Advanced Database Systems](https://www.youtube.com/watch?v=NLycrsJ1jI8&list=PLSE8ODhjZXjYa_zX-KeMJui7pcN1rIaIJ)
 
 ## 📋 Prerequisites
 
@@ -16,6 +18,8 @@
 
 ## 📚 Topics Covered
 
+### Advanced SQL
+
 | Topic | Description | Example File |
 |-------|-------------|--------------|
 | **Stored Procedures** | Creating, modifying, parameters, output | [procedures.sql](examples/procedures.sql) |
@@ -24,6 +28,15 @@
 | **User-Defined Functions** | Scalar functions, table variables | [functions.sql](examples/functions.sql) |
 | **Indexes** | Clustered & non-clustered indexes | [indexes.sql](examples/indexes.sql) |
 | **Triggers** | DML triggers, INSERTED/DELETED tables | [triggers.sql](examples/triggers.sql) |
+
+### Advanced Database Design
+
+| Topic | Description |
+|-------|-------------|
+| **Data Models** | Relational, hierarchical, network, and object-oriented models |
+| **Database Storage** | File organization, buffer management, disk storage |
+| **Query Engine** | Query parsing, execution plans, optimization strategies |
+| **Database Optimizer** | Cost-based optimization, join algorithms, index selection |
 
 ## 📁 Repository Structure
 
