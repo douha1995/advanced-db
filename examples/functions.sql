@@ -1,6 +1,18 @@
 use BikeStore
 go
----------- How to create scaler function -----------------------
+-- ============================================================================
+-- SQL SERVER FUNCTIONS
+-- ============================================================================
+-- This file covers:
+--   1. Scalar Functions
+--   2. Table Variables
+--   3. Table-Valued Functions (Inline & Multi-Statement)
+-- ============================================================================
+
+-- ----------------------------------------------------------------------------
+-- SECTION 1: SCALAR FUNCTIONS
+-- ----------------------------------------------------------------------------
+-- Syntax:
 CREATE FUNCTION [schema_name.]function_name (parameter_list)
 RETURNS data_type AS
 BEGIN
@@ -8,7 +20,7 @@ BEGIN
     RETURN value
 END
 
------------------------ scalar function examples -------------------------
+-- Example: Calculate Net Sale
 CREATE FUNCTION sales.udfNetSale1(
     @quantity INT,
     @list_price DEC(10,2),
@@ -36,7 +48,7 @@ ORDER BY
     net_amount DESC;
 
 
----------------------- Modifying a scalar function-------------------
+-- Modifying a Scalar Function (ALTER FUNCTION)
 create or ALTER FUNCTION [schema_name.]function_name (parameter_list)
     RETURN data_type AS
     BEGIN
@@ -49,7 +61,10 @@ create or ALTER FUNCTION [schema_name.]function_name (parameter_list)
 
 
 
--------------- SQL Server Table Variables -------------------------
+-- ----------------------------------------------------------------------------
+-- SECTION 2: TABLE VARIABLES
+-- ----------------------------------------------------------------------------
+-- Syntax:
 DECLARE @table_variable_name TABLE (
     column_list
 );
@@ -131,7 +146,10 @@ FROM
 
 
 
-------------------------- SQL Server Table-valued Functions-------------------
+-- ----------------------------------------------------------------------------
+-- SECTION 3: TABLE-VALUED FUNCTIONS
+-- ----------------------------------------------------------------------------
+-- Inline Table-Valued Function
 CREATE FUNCTION udfProductInYear (
     @model_year INT
 )

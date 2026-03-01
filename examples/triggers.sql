@@ -1,5 +1,15 @@
 use BikeStore
 go
+-- ============================================================================
+-- SQL SERVER TRIGGERS
+-- ============================================================================
+-- This file covers:
+--   1. DML Triggers (AFTER INSERT, UPDATE, DELETE)
+--   2. INSTEAD OF Triggers
+--   3. DDL Triggers (CREATE, ALTER, DROP events)
+--   4. Managing Triggers (DISABLE, ENABLE, VIEW, DROP)
+-- ============================================================================
+
 /*
 SQL Server triggers are special stored procedures that are executed automatically in response 
 to the database object, database, and server events. SQL Server provides three type of triggers:
@@ -12,6 +22,10 @@ perform DDL-like operations.
 3- Logon triggers which fire in response to LOGON events
 */
 
+-- ----------------------------------------------------------------------------
+-- SECTION 1: DML TRIGGERS (Data Manipulation Language)
+-- ----------------------------------------------------------------------------
+-- Syntax:
 CREATE TRIGGER [schema_name.]trigger_name
 ON table_name
 AFTER  {[INSERT],[UPDATE],[DELETE]}
@@ -19,7 +33,7 @@ AFTER  {[INSERT],[UPDATE],[DELETE]}
 AS
 {sql_statements}
 
--- “Virtual” tables for triggers: INSERTED and DELETED
+-- ï¿½Virtualï¿½ tables for triggers: INSERTED and DELETED
 
 CREATE TABLE production.product_audits(
     change_id INT IDENTITY PRIMARY KEY,
@@ -114,7 +128,9 @@ FROM
     production.product_audits;
 
 
--- SQL Server INSTEAD OF Trigger
+-- ----------------------------------------------------------------------------
+-- SECTION 2: INSTEAD OF TRIGGERS
+-- ----------------------------------------------------------------------------
 CREATE TRIGGER [schema_name.] trigger_name
 ON {table_name | view_name }
 INSTEAD OF {[INSERT] [,] [UPDATE] [,] [DELETE] }
@@ -181,7 +197,9 @@ FROM
 	production.brand_approvals;
 
 
--- SQL Server DDL Trigger
+-- ----------------------------------------------------------------------------
+-- SECTION 3: DDL TRIGGERS (Data Definition Language)
+-- ----------------------------------------------------------------------------
 CREATE TRIGGER trigger_name
 ON { DATABASE |  ALL SERVER}
 [WITH ddl_trigger_option]
@@ -230,6 +248,9 @@ SELECT
 FROM
     index_logs;
 
+-- ----------------------------------------------------------------------------
+-- SECTION 4: MANAGING TRIGGERS
+-- ----------------------------------------------------------------------------
 -- DISABLE TRIGGER
 DISABLE TRIGGER [schema_name.][trigger_name] 
 ON [object_name | DATABASE | ALL SERVER]

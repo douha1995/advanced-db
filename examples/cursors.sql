@@ -1,4 +1,16 @@
-------------------- SQL Cursor ------------------------------
+-- ============================================================================
+-- SQL CURSORS & ERROR HANDLING
+-- ============================================================================
+-- This file covers:
+--   1. SQL Cursor basics (DECLARE, OPEN, FETCH, CLOSE, DEALLOCATE)
+--   2. TRY-CATCH error handling
+--   3. Transaction state management with XACT_STATE()
+-- ============================================================================
+
+-- ----------------------------------------------------------------------------
+-- SECTION 1: SQL CURSORS
+-- ----------------------------------------------------------------------------
+-- Syntax:
 /*
 DECLARE cursor_name CURSOR
     FOR select_statement;
@@ -46,7 +58,9 @@ CLOSE cursor_product;
 DEALLOCATE cursor_product;
 
 
------------------ TRY CATCH ----------------
+-- ----------------------------------------------------------------------------
+-- SECTION 2: TRY-CATCH ERROR HANDLING
+-- ----------------------------------------------------------------------------
 /*
 BEGIN TRY  
    -- statements that may cause exceptions
@@ -109,7 +123,7 @@ you should issue a ROLLBACK TRANSACTION statement.
 In case the XACT_STATE() function returns 1, it means that a committable transaction is pending.
 You can issue a COMMIT TRANSACTION statement in this case.
 If the XACT_STATE() function return 0, it means no transaction is pending, therefore, 
-you don’t need to take any action.
+you donï¿½t need to take any action.
 */
 
 CREATE TABLE sales.persons

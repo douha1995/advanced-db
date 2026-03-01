@@ -1,5 +1,16 @@
 use BikeStore
-go 
+go
+-- ============================================================================
+-- SQL SERVER STORED PROCEDURES
+-- ============================================================================
+-- This file covers:
+--   1. Creating Procedures
+--   2. Executing Procedures
+--   3. Modifying & Dropping Procedures
+--   4. Procedure Parameters (Input, Output, Default Values)
+--   5. Variables in Procedures
+--   6. Conditional Logic (IF-ELSE)
+-- ============================================================================
 
 SELECT 
 	product_name, 
@@ -9,7 +20,9 @@ FROM
 ORDER BY 
 	product_name;
 
------------- create procedure ------------------------
+-- ----------------------------------------------------------------------------
+-- SECTION 1: CREATE PROCEDURE
+-- ----------------------------------------------------------------------------
 CREATE PROCEDURE uspProductList_1
 AS
 BEGIN
@@ -22,13 +35,17 @@ BEGIN
         product_name;
 END;
 
--------------- execution of procedure --------------------------
+-- ----------------------------------------------------------------------------
+-- SECTION 2: EXECUTE PROCEDURE
+-- ----------------------------------------------------------------------------
 EXEC uspProductList_1;
 
 EXECUTE uspProductList_1;
 
 
--------------- modify procedure --------------------------------
+-- ----------------------------------------------------------------------------
+-- SECTION 3: MODIFY PROCEDURE (ALTER)
+-- ----------------------------------------------------------------------------
  ALTER PROCEDURE uspProductList_1
     AS
     BEGIN
@@ -43,11 +60,13 @@ EXECUTE uspProductList_1;
 
 EXECUTE uspProductList_1;
 
------------- drop procedure 
+-- DROP PROCEDURE
 DROP PROCEDURE uspProductList_1;
 
 
----------- Procedure Parameters --------------------------
+-- ----------------------------------------------------------------------------
+-- SECTION 4: PROCEDURE PARAMETERS
+-- ----------------------------------------------------------------------------
 -- create stored procedure to find the products whose list prices are greater than
 -- an input price 
 
@@ -173,7 +192,9 @@ EXECUTE uspFindProducts
     @name = 'Trek';
 
 
----------------- variables --------------------------------------
+-- ----------------------------------------------------------------------------
+-- SECTION 5: VARIABLES
+-- ----------------------------------------------------------------------------
 
 DECLARE @model_year SMALLINT;
 
@@ -205,7 +226,9 @@ SELECT @product_count;
 PRINT @product_count;
 
 
---------------- procedure with variables ------------------------------------
+-- ----------------------------------------------------------------------------
+-- SECTION 6: PROCEDURE WITH VARIABLES
+-- ----------------------------------------------------------------------------
 Create  PROCEDURE uspGetProductList1(
     @model_year SMALLINT
 ) AS 
@@ -228,7 +251,9 @@ END;
 
 exec uspGetProductList1 2019
 
---------------- procedure output --------------------------------------
+-- ----------------------------------------------------------------------------
+-- SECTION 7: OUTPUT PARAMETERS
+-- ----------------------------------------------------------------------------
 
 CREATE PROCEDURE uspFindProductByModel (
     @model_year SMALLINT,
