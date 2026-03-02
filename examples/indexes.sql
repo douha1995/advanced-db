@@ -1,6 +1,19 @@
 USE BikeStore
 GO
-------------------- Clustered Indexes----------------------
+-- ============================================================================
+-- SQL SERVER INDEXES
+-- ============================================================================
+-- This file covers:
+--   1. Clustered Indexes
+--   2. Non-Clustered Indexes
+--   3. Composite Indexes (Multiple Columns)
+--   4. Unique Indexes
+--   5. Indexes with Included Columns
+-- ============================================================================
+
+-- ----------------------------------------------------------------------------
+-- SECTION 1: CLUSTERED INDEXES
+-- ----------------------------------------------------------------------------
 CREATE TABLE production.parts(
     part_id   INT NOT NULL, 
     part_name VARCHAR(100)
@@ -49,7 +62,9 @@ WHERE
 CREATE CLUSTERED INDEX ix_parts_id
 ON production.parts (part_id); 
 
---------------------- non-clustered indexes -------------------
+-- ----------------------------------------------------------------------------
+-- SECTION 2: NON-CLUSTERED INDEXES
+-- ----------------------------------------------------------------------------
 SELECT 
     customer_id, 
     city
@@ -62,7 +77,9 @@ WHERE
 CREATE INDEX ix_customers_city
 ON sales.customers(city);
 
------------------- nonclustered index for multiple columns ---------
+-- ----------------------------------------------------------------------------
+-- SECTION 3: COMPOSITE INDEXES (Multiple Columns)
+-- ----------------------------------------------------------------------------
 
 SELECT 
     customer_id, 
@@ -106,14 +123,18 @@ FROM
 WHERE 
     first_name = 'Adam';
 
-------------------------- Rename Index -----------------
+-- ----------------------------------------------------------------------------
+-- SECTION 4: RENAME INDEX
+-- ----------------------------------------------------------------------------
 EXEC sp_rename 
         @objname = N'sales.customers.ix_customers_city',
         @newname = N'ix_cust_city' ,
         @objtype = N'INDEX';
 
 
------------------------- Unique Index ---------------------
+-- ----------------------------------------------------------------------------
+-- SECTION 5: UNIQUE INDEXES
+-- ----------------------------------------------------------------------------
 SELECT
     customer_id, 
     email 
@@ -148,14 +169,18 @@ CREATE TABLE t1 (
 CREATE UNIQUE INDEX ix_uniq_ab 
 ON t1(a, b);
 
-------------------- DROP INDEX  ------------------------
+-- ----------------------------------------------------------------------------
+-- SECTION 6: DROP INDEX
+-- ----------------------------------------------------------------------------
 
 DROP INDEX 
     ix_customers_name ON sales.customers,
     ix_cust_fullname ON sales.customers;
 
 
----------------------- Indexes with Included Columns ---------------
+-- ----------------------------------------------------------------------------
+-- SECTION 7: INDEXES WITH INCLUDED COLUMNS
+-- ----------------------------------------------------------------------------
 
 SELECT    
     customer_id, 
